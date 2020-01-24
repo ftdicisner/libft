@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 18:08:49 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/24 13:00:09 by dicisner         ###   ########.fr       */
+/*   Created: 2020/01/23 10:32:20 by dicisner          #+#    #+#             */
+/*   Updated: 2020/01/23 11:03:41 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
+	int nbr;
+	int i;
+	int isneg;
 
+	nbr = 0;
 	i = 0;
-	if (*needle == 0)
-		return ((char *)haystack);
-	while (haystack[i] != 0)
+	isneg = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
+			|| str[i] == '\f' || str[i] == '\v')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
-		{
-			if (haystack[i + j] == 0 && needle[j] == 0)
-				return ((char *)haystack + i);
-			j++;
-		}
-		if (needle[j] == 0)
-			return ((char *)haystack + i);
+		if (str[i] == '-')
+			isneg = 1;
 		i++;
 	}
-	return (0);
+	while (str[i] == 0)
+		i++;
+	while (str[i] != 0 && ft_isdigit(str[i]))
+	{
+		nbr = str[i] - '0' + nbr * 10;
+		i++;
+	}
+	return (nbr * (isneg ? -1 : 1));
 }

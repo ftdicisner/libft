@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 11:38:29 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/24 13:14:19 by dicisner         ###   ########.fr       */
+/*   Created: 2020/01/23 13:45:23 by dicisner          #+#    #+#             */
+/*   Updated: 2020/01/23 13:54:22 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t shift;
+	size_t	totalsize;
+	void	*dst;
 
-	shift = 0;
-	if (dst == 0 && src == 0)
+	totalsize = size * count;
+	if ((dst = malloc(sizeof(char) * totalsize)) == 0)
 		return (0);
-	while (shift < n)
-	{
-		((char *)dst)[shift] = ((char *)src)[shift];
-		shift++;
-	}
+	ft_memset(dst, 0, totalsize);
 	return (dst);
 }

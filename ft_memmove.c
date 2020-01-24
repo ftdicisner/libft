@@ -6,7 +6,7 @@
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 13:23:00 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/22 14:16:27 by dicisner         ###   ########.fr       */
+/*   Updated: 2020/01/24 12:45:58 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	size_t shift;
 
 	shift = 0;
+	if (!dst && !src)
+		return (0);
 	if ((intptr_t)src < (intptr_t)dst)
 	{
 		while (len > 0)

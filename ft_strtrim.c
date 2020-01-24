@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 18:08:49 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/24 13:00:09 by dicisner         ###   ########.fr       */
+/*   Created: 2020/01/23 15:32:20 by dicisner          #+#    #+#             */
+/*   Updated: 2020/01/23 17:09:27 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+static int		to_trim(char c, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	int i;
 
 	i = 0;
-	if (*needle == 0)
-		return ((char *)haystack);
-	while (haystack[i] != 0)
+	while (set[i] != 0)
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
-		{
-			if (haystack[i + j] == 0 && needle[j] == 0)
-				return ((char *)haystack + i);
-			j++;
-		}
-		if (needle[j] == 0)
-			return ((char *)haystack + i);
+		if (set[i] == c)
+			return (1);
 		i++;
 	}
 	return (0);
+}
+
+char			*ft_strtrim(char const *s1, char const *set)
+{
+	char		*newstr;
+	size_t		i;
+	size_t		len;
+	size_t		j;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1);
+	while (to_trim(s1[i], set))
+		i++;
+	while (to_trim(s1[len - 1 - j], set))
+		j++;
+	if (i > len - 1 - j)
+		newstr = ft_calloc(1, 1);
+	else
+		newstr = ft_substr(s1, i, len - j - i);
+	return (newstr);
 }

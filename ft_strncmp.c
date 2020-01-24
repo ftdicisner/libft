@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 11:38:29 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/24 13:14:19 by dicisner         ###   ########.fr       */
+/*   Created: 2020/01/22 21:32:43 by dicisner          #+#    #+#             */
+/*   Updated: 2020/01/23 10:31:08 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t shift;
 
 	shift = 0;
-	if (dst == 0 && src == 0)
+	if (n == 0)
 		return (0);
-	while (shift < n)
+	while (s1[shift] == s2[shift] && s1[shift] != 0)
 	{
-		((char *)dst)[shift] = ((char *)src)[shift];
-		shift++;
+		if (shift < n - 1)
+			shift++;
+		else
+			return (0);
 	}
-	return (dst);
+	return ((unsigned char)(s1[shift]) - (unsigned char)(s2[shift]));
 }

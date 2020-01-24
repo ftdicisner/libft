@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 11:38:29 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/24 13:14:19 by dicisner         ###   ########.fr       */
+/*   Created: 2020/01/24 14:44:03 by dicisner          #+#    #+#             */
+/*   Updated: 2020/01/24 14:51:12 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+static	size_t	count_dig(int n)
 {
-	size_t shift;
+	size_t dig;
 
-	shift = 0;
-	if (dst == 0 && src == 0)
-		return (0);
-	while (shift < n)
-	{
-		((char *)dst)[shift] = ((char *)src)[shift];
-		shift++;
+	dig = 1;
+	while (n / 10)
+	{	
+		n = n / 10;
+		dig++;
 	}
-	return (dst);
+	return (dig);
+}
+
+static	int		isneg(int n)
+{
+	if (n < 0) 
+		return (1);
+	return (0);
+}
+
+char	*ft_itoa(int n)
+{
+		
 }
