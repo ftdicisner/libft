@@ -6,7 +6,7 @@
 #    By: dicisner <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/20 11:29:42 by dicisner          #+#    #+#              #
-#    Updated: 2020/01/25 15:12:21 by dicisner         ###   ########.fr        #
+#    Updated: 2020/01/25 15:21:20 by dicisner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,3 @@ fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
-
-test:
-	bash ../Libftest/grademe.sh
