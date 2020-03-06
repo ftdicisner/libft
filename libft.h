@@ -6,7 +6,7 @@
 /*   By: dicisner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 09:39:35 by dicisner          #+#    #+#             */
-/*   Updated: 2020/01/25 12:40:13 by dicisner         ###   ########.fr       */
+/*   Updated: 2020/03/06 19:01:17 by dicisner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-t_list			*ft_lstmap(t_list *lst,
+t_list			*ft_lstmap(t_list *lst, 
 		void *(*f)(void *), void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 void			ft_lstdelone(t_list *lst, void (*del)(void*));
