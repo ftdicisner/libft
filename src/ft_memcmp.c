@@ -22,7 +22,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		if (((unsigned char *)s1)[shift] != ((unsigned char *)s2)[shift])
 			return (((unsigned char *)s1)[shift] -
 					((unsigned char *)s2)[shift]);
-			shift++;
+		shift++;
 	}
 	return (0);
 }
